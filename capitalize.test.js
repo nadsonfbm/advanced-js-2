@@ -19,4 +19,4 @@ test('capitalize function throws error for non-string input', () => {
     expect(() => capitalize(null)).toThrow();
     expect(() => capitalize(undefined)).toThrow();
     expect(() => capitalize(8419581651)).toThrow();
-});
+})
