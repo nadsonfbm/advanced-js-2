@@ -1,0 +1,11 @@
+{
+  "name": "nadson",
+  "version": "1.0.0",
+  "description": "json",
+  "main": "analyze.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "nadson",
+  "license": "ISC"
+}
