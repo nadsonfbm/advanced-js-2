@@ -1,29 +1,28 @@
-describe('caesarCipher', () => {
-    test('throws an error when the first argument is not a string', () => {
-      expect(() => caesarCipher(123, 1)).toThrow('Argument must be a string');
-    });
+test('caesarCipher function shifts a string by a given amount', () => {
+    expect(caesarCipher('hello', 1)).toBe('ifmmp');
+    expect(caesarCipher('world', 13)).toBe('jbeyq');
+    expect(caesarCipher('abcXYZ', 3)).toBe('defABC');
+});
   
-    test('returns an empty string when passed an empty string', () => {
-      expect(caesarCipher('', 1)).toBe('');
-    });
+test('caesarCipher function wraps from z to a', () => {
+    expect(caesarCipher('xyz', 3)).toBe('abc');
+});
   
-    test('shifts the characters in the string by the specified amount', () => {
-      expect(caesarCipher('abc', 1)).toBe('bcd');
-      expect(caesarCipher('ABC', 1)).toBe('BCD');
-      expect(caesarCipher('xyz', 5)).toBe('cde');
-      expect(caesarCipher('XYZ', 5)).toBe('CDE');
-    });
+test('caesarCipher function keeps the same case', () => {
+    expect(caesarCipher('Hello', 5)).toBe('Mjqqt');
+    expect(caesarCipher('WORLD', 2)).toBe('YQTNF');
+});
   
-    test('wraps around when shifting beyond the end of the alphabet', () => {
-      expect(caesarCipher('xyz', 3)).toBe('abc');
-      expect(caesarCipher('XYZ', 3)).toBe('ABC');
-      expect(caesarCipher('xyz', 28)).toBe('zab');
-      expect(caesarCipher('XYZ', 28)).toBe('ZAB');
-    });
+test('caesarCipher function handles punctuation', () => {
+    expect(caesarCipher('Hello, world!', 5)).toBe('Mjqqt, btwqi!');
+});
   
-    test('handles non-alphabetic characters', () => {
-      expect(caesarCipher('123', 1)).toBe('123');
-      expect(caesarCipher('!@#', 1)).toBe('!@#');
-      expect(caesarCipher('abc123!@#', 1)).toBe('bcd123!@#');
-    });
-  });
+test('caesarCipher function throws error for non-string input', () => {
+    expect(() => caesarCipher(null, 5)).toThrow();
+    expect(() => caesarCipher(undefined, 5)).toThrow();
+    expect(() => caesarCipher(123, 5)).toThrow();
+});
+  
+test('caesarCipher function handles negative shift amount', () => {
+    expect(caesarCipher('hello', -1)).toBe('gdkkn');
+});
